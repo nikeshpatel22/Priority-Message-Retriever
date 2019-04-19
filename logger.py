@@ -1,4 +1,4 @@
-import queue
+from queue import LifoQueue
 
 class Logger:
     """
@@ -30,9 +30,9 @@ class Logger:
         no parameters
         """
 
-        self.priorityOne = queue.Queue(maxsize=30)
-        self.priorityTwo = queue.Queue(maxsize=30)
-        self.priorityThree = queue.Queue(maxsize=30)
+        self.priorityOne = LifoQueue()
+        self.priorityTwo = LifoQueue()
+        self.priorityThree = LifoQueue()
 
     def log(self, priority, message):
         """

@@ -1,4 +1,4 @@
-import queue
+from queue import LifoQueue
 from logger import *
 
 class LogReader(Logger):
@@ -48,14 +48,15 @@ class LogReader(Logger):
         if self.priorityThree.empty() == False:
             message = self.priorityThree.get()
             print(message)
-            return
+            return message
         if self.priorityTwo.empty() == False:
             message = self.priorityTwo.get()
             print(message)
-            return
+            return message
         if self.priorityOne.empty() == False:
             message = self.priorityOne.get()
             print(message)
-            return
+            return message
         else:
             print("no messages")
+            return "no messages"
