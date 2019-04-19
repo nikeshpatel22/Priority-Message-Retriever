@@ -34,7 +34,7 @@ class Logger:
         self.priorityTwo = LifoQueue()
         self.priorityThree = LifoQueue()
 
-    def log(self, priority, message):
+    def log(self, message, priority=1):
         """
         Logs the message into the correct queue
 
