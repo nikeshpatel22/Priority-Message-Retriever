@@ -1,4 +1,5 @@
-from main import *
+from logger import *
+from logReader import *
 import queue
 
 logger = Logger()
