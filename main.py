@@ -1,11 +1,11 @@
 import queue
 
-class logger:
+class Logger:
 
-    def __init_(self):
-        self.priorityOne = queue.Queue()
-        self.priorityTwo = queue.Queue()
-        self.priorityThree = queue.Queue()
+    def __init__(self):
+        self.priorityOne = queue.Queue(maxsize=30)
+        self.priorityTwo = queue.Queue(maxsize=30)
+        self.priorityThree = queue.Queue(maxsize=30)
 
     def log(self, priority, message):
         if priority == 1:
@@ -15,23 +15,25 @@ class logger:
         if priority == 3:
             self.priorityThree.put(message)
 
-class logReader(logger):
+class LogReader(Logger):
 
     def __init__(self, logger_variables):
         self.priorityOne = logger_variables.priorityOne
         self.priorityTwo = logger_variables.priorityTwo
         self.priorityThree = logger_variables.priorityThree
 
-    def get():
-        if self.priorityOne.empty() == False:
-            message = self.priorityOne.get()
+    def get(self):
+        if self.priorityThree.empty() == False:
+            message = self.priorityThree.get()
             print(message)
             return
         if self.priorityTwo.empty() == False:
             message = self.priorityTwo.get()
             print(message)
             return
-        if self.priorityThree.empty() == False:
-            message = self.priorityThree.get()
+        if self.priorityOne.empty() == False:
+            message = self.priorityOne.get()
             print(message)
             return
+        else:
+            print("no messages")
