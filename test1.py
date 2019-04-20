@@ -2,6 +2,7 @@ from logger import *
 from logReader import *
 from queue import LifoQueue
 import unittest
+import time
 
 
 class TestLogging(unittest.TestCase):
@@ -15,7 +16,9 @@ class TestLogging(unittest.TestCase):
         """
         logger = Logger()
         logger.log('abc', 1)
+        time.sleep(5)
         logger.log('def', 2)
+        time.sleep(5)
         logger.log('ghi', 1)
 
         logReader = LogReader(logger)
@@ -27,6 +30,8 @@ class TestLogging(unittest.TestCase):
         self.assertEqual(message, 'abc')
         message = logReader.get()
         self.assertEqual(message, 'no messages')
+
+        print('\n')
 
     def test_logging_with_no_priority(self):
         """

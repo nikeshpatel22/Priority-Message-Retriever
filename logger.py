@@ -1,4 +1,6 @@
 from queue import LifoQueue
+import datetime
+import time
 
 class Logger:
     """
@@ -46,9 +48,14 @@ class Logger:
             message to be logged
         """
 
+        timestamp = time.time()
+        st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+
+        temp_list = [priority, st, message]
+
         if priority == 1:
-            self.priorityOne.put(message)
+            self.priorityOne.put(temp_list)
         if priority == 2:
-            self.priorityTwo.put(message)
+            self.priorityTwo.put(temp_list)
         if priority == 3:
-            self.priorityThree.put(message)
+            self.priorityThree.put(temp_list)

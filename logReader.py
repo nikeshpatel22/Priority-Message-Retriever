@@ -24,7 +24,7 @@ class LogReader(Logger):
 
     def __init__(self, logger_variables):
         """
-        initialize queues
+        initialize queues, prints header for logs
 
         Parameters
         ----------
@@ -35,6 +35,9 @@ class LogReader(Logger):
         self.priorityOne = logger_variables.priorityOne
         self.priorityTwo = logger_variables.priorityTwo
         self.priorityThree = logger_variables.priorityThree
+
+        print("Priority    Timestamp                Message")
+        print("------------------------------------------")
 
     def get(self):
         """
@@ -47,16 +50,16 @@ class LogReader(Logger):
 
         if self.priorityThree.empty() == False:
             message = self.priorityThree.get()
-            print(message)
-            return message
+            print("{}           {}       {}".format(message[0], message[1], message[2]))
+            return message[2]
         if self.priorityTwo.empty() == False:
             message = self.priorityTwo.get()
-            print(message)
-            return message
+            print("{}           {}       {}".format(message[0], message[1], message[2]))
+            return message[2]
         if self.priorityOne.empty() == False:
             message = self.priorityOne.get()
-            print(message)
-            return message
+            print("{}           {}       {}".format(message[0], message[1], message[2]))
+            return message[2]
         else:
             print("no messages")
             return "no messages"
