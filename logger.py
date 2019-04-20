@@ -59,3 +59,12 @@ class Logger:
             self.priorityTwo.put(temp_list)
         if priority == 3:
             self.priorityThree.put(temp_list)
+
+        # if priority is above 3 include in priority 3 queue
+        # else if priority is below 1, include in priority 1 queue
+        if priority > 3:
+            temp_list[0] = 3
+            self.priorityThree.put(temp_list)
+        elif priority < 1:
+            temp_list[0] = 1
+            self.priorityOne.put(temp_list)

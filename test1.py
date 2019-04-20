@@ -71,5 +71,31 @@ class TestLogging(unittest.TestCase):
         message = logReader.get()
         self.assertEqual(message, 'no messages')
 
+    def test_wrong_priority(self):
+        """
+        Test logging messages with invalid priority, then reading the logs
+        """
+
+        print("TEST-4 -------------------------------------")
+
+        logger = Logger()
+        logger.log('hello')
+        logger.log('abc', 5)
+        logger.log('def', 2)
+        logger.log('ghi', 3)
+        logger.log('bye', 0)
+
+        logReader = LogReader(logger)
+        message = logReader.get()
+        self.assertEqual(message, 'ghi')
+        message = logReader.get()
+        self.assertEqual(message, 'abc')
+        message = logReader.get()
+        self.assertEqual(message, 'def')
+        message = logReader.get()
+        self.assertEqual(message, 'bye')
+        message = logReader.get()
+        self.assertEqual(message, 'hello')
+
 if __name__ == '__main__':
     unittest.main()
