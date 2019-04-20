@@ -19,9 +19,9 @@ class TestLogging(unittest.TestCase):
 
         logger = Logger()
         logger.log('abc', 1)
-        time.sleep(5)
+        time.sleep(1)
         logger.log('def', 2)
-        time.sleep(5)
+        time.sleep(1)
         logger.log('ghi', 1)
 
         logReader = LogReader(logger)
@@ -43,8 +43,11 @@ class TestLogging(unittest.TestCase):
 
         logger = Logger()
         logger.log('hello')
+        time.sleep(1)
         logger.log('abc', 3)
+        time.sleep(1)
         logger.log('def', 2)
+        time.sleep(1)
         logger.log('ghi', 2)
 
         logReader = LogReader(logger)
@@ -80,9 +83,13 @@ class TestLogging(unittest.TestCase):
 
         logger = Logger()
         logger.log('hello')
+        time.sleep(1)
         logger.log('abc', 5)
+        time.sleep(1)
         logger.log('def', 2)
+        time.sleep(1)
         logger.log('ghi', 3)
+        time.sleep(1)
         logger.log('bye', 0)
 
         logReader = LogReader(logger)
