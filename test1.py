@@ -14,6 +14,9 @@ class TestLogging(unittest.TestCase):
         """
         Test logging the message, then reading the message
         """
+
+        print("TEST-1 -------------------------------------")
+
         logger = Logger()
         logger.log('abc', 1)
         time.sleep(5)
@@ -31,12 +34,13 @@ class TestLogging(unittest.TestCase):
         message = logReader.get()
         self.assertEqual(message, 'no messages')
 
-        print('\n')
-
     def test_logging_with_no_priority(self):
         """
-        Test logging the message, then reading the message
+        Test logging the message with no priority, then reading the message
         """
+
+        print("TEST-2 -------------------------------------")
+
         logger = Logger()
         logger.log('hello')
         logger.log('abc', 3)
@@ -53,6 +57,19 @@ class TestLogging(unittest.TestCase):
         message = logReader.get()
         self.assertEqual(message, 'hello')
 
+    def test_no_logs(self):
+        """
+        Test logging no messages, then reading the logs
+        """
+
+        print("TEST-3 -------------------------------------")
+
+        logger = Logger()
+        logReader = LogReader(logger)
+        message = logReader.get()
+        self.assertEqual(message, 'no messages')
+        message = logReader.get()
+        self.assertEqual(message, 'no messages')
 
 if __name__ == '__main__':
     unittest.main()

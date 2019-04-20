@@ -36,8 +36,8 @@ class LogReader(Logger):
         self.priorityTwo = logger_variables.priorityTwo
         self.priorityThree = logger_variables.priorityThree
 
-        print("Priority    Timestamp                Message")
-        print("------------------------------------------")
+        print("Priority    Timestamp                 Message")
+        print("---------------------------------------------")
 
     def get(self):
         """
